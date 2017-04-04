@@ -9,7 +9,25 @@ def passear_ou_dormir(pergunta_inicial):
 			return pergunta_inicial
 		else:
 			print("Não existe essa função")
-			
+
+def inspermon_inicial(dados):
+	while True:
+		escolha = input("Escolha entre os inspermons Boludosmon , Turtwig ou Pixu:")
+		if escolha == "Boludosmon":
+			colection = dados[6] 
+			return "Você escolheu o Inspermon:Boludosmon" # so mostra o nome do Insper
+			break
+		elif escolha == "Turtwig":
+			colection = dados[7]
+			return "Você escolheu o Inspermon:Turtwig"
+			break
+		elif escolha == "Pixu":
+			colection = dados[8]
+			return "Você escolheu o Inspermon:Pixu"  
+			break
+		else:
+			print("Erro!Escolha novamente")
+			continue			
 
 def Aparecimento_de_Mons(dados):
 	lista_Mons = []
@@ -31,6 +49,7 @@ pergunta_inicial = passear_ou_dormir("")
 
 if pergunta_inicial == "passear":
 	print("Vamos passear")
+	print(inspermon_inicial(dados))
 	print(Aparecimento_de_Mons(dados))
 else:
 	print("Ate a proxima")
