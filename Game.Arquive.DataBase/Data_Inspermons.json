@@ -1,4 +1,5 @@
 [ 
+<<<<<<< HEAD
 {"nome":"Yangron","poder":150,"vida":200,"defesa":110},
 {"nome":"Yingalix","poder":160,"vida":200,"defesa":100},
 {"nome":"Dolphygon","poder":80,"vida":60,"defesa":50},
@@ -12,3 +13,19 @@
 {"nome":"Yetiger","poder":67,"vida":65,"defesa":30},
 {"nome":"Moltander","poder":35,"vida":50,"defesa":15}
 ]
+=======
+{"nome":"Yangron","poder":150,"vida":200,"defesa":110,"XP":0},
+{"nome":"Yingalix","poder":160,"vida":200,"defesa":100,"XP":0},
+{"nome":"Dolphygon","poder":80,"vida":60,"defesa":50,"XP":0},
+{"nome":"Spidoth","poder":90,"vida":50,"defesa":70,"XP":0},
+{"nome":"Stunzelle","poder":40,"vida":40,"defesa":30,"XP":0},
+{"nome":"Ramhawk","poder":80,"vida":60,"defesa":70,"XP":0},
+{"nome":"Gladium","poder":35,"vida":35,"defesa":15,"XP":0},
+{"nome":"Oddibia","poder":35,"vida":35,"defesa":25,"XP":0},
+{"nome":"Penguinite","poder":75,"vida":70,"defesa":35,"XP":0},
+{"nome":"Kyneton","poder":70,"vida":75,"defesa":40,"XP":0},
+{"nome":"Yetiger","poder":67,"vida":65,"defesa":30,"XP":0},
+{"nome":"Moltander","poder":35,"vida":50,"defesa":15,"XP":0}
+]
+
+>>>>>>> d7e6c201c0acea8cbc778488eb1977af08f50302
