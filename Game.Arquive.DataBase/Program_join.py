@@ -67,7 +67,16 @@ print("Inspermons membros o de seu time: {0}".format(list_player))
 pergunta_inicial = passear_ou_dormir("")
 
 if pergunta_inicial == "passear":
+<<<<<<< Updated upstream
 	print(Fore.RED+"Passeando...")
 	print(Fore.RED+"Inspermon encontrado!\n {0}".format(Aparecimento_de_Mons(dados)))
 else:
 	print(Fore.BLUE + "Ate a proxima!")
+=======
+	print("Vamos passear")
+	print(inspermon_inicial(dados))
+	
+	print(Aparecimento_de_Mons(dados))
+else:
+	print("Até a proxima")
+>>>>>>> Stashed changes
