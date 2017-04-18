@@ -101,7 +101,7 @@ def batalha(dados):
 # Programa Principal----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 with open("Data_Inspermons.json") as arquivo:
 	dados = json.load(arquivo)
-with open('texto de introduçao.txt','r') as texto:
+with open('texto de introduçao.txt','r',encoding="Latin-1") as texto:
 	for linha in texto.readlines():
 		print(Fore.GREEN+linha)
 print(inspermon_inicial(dados))

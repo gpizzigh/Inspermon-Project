@@ -8,27 +8,34 @@ init(autoreset=True)
 #Variaveis--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 list_player = []
 #Funções----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-def passear_ou_dormir(pergunta_inicial):
-	while True:
+def passear_ou_dormir():
+    #pergunta_inicial = input("Você quer passear ou dormir?:")
+	f = True
+	while f:
 		pergunta_inicial = input("Você quer passear ou dormir?:")
 		if pergunta_inicial == "dormir":
 			print(Fore.BLUE + "Ate a proxima!")
-			return pergunta_inicial
+			g = False
+			f = False
+			break
 		elif pergunta_inicial == "passear":
+			print(Fore.BLACK + "------"*20)
 			print(Fore.RED+"Passeando...")
 			print(Fore.RED+"Inspermon encontrado!\n")
+			print(Fore.BLACK + "------"*20)
 			batalha(dados)
-			return pergunta_inicial
+			passear_ou_dormir()
 		else:
 			print(Back.MAGENTA+"Não existe esta função!")
+			return pergunta_inicial # !!Funçao OK!!
 
 def inspermon_inicial(dados):
 	#list_player = []
 	while True:
-		#print("Escolha um dos seguintes Inspermons iniciais:")
-		print("Primeira Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}\nXP:{4}".format(dados[6]['nome'],dados[6]['poder'],dados[6]['vida'],dados[6]['defesa'],dados[6]['XP']))
-		print("Segunda Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}\nXP:{4}".format(dados[7]['nome'],dados[7]['poder'],dados[7]['vida'],dados[7]['defesa'],dados[7]['XP']))
-		print("Terceira Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}\nXP:{4}".format(dados[11]['nome'],dados[11]['poder'],dados[11]['vida'],dados[11]['defesa'],dados[11]['XP']))
+		print("Escolha um dos seguintes Inspermons iniciais:")
+		print(Fore.BLUE + "Primeira Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}".format(dados[6]['nome'],dados[6]['poder'],dados[6]['vida'],dados[6]['defesa']))
+		print(Fore.RED + "Segunda Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}".format(dados[7]['nome'],dados[7]['poder'],dados[7]['vida'],dados[7]['defesa']))
+		print(Fore.GREEN + "Terceira Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}".format(dados[11]['nome'],dados[11]['poder'],dados[11]['vida'],dados[11]['defesa']))
 		escolha = input("Escolha entre os Inspermons {0}, {1} ou {2}:".format(dados[6]["nome"],dados[7]["nome"],dados[11]["nome"]))
 		if escolha == dados[6]['nome']:
 			colection = dados[6]
@@ -44,12 +51,13 @@ def inspermon_inicial(dados):
 			break
 		elif escolha == dados[11]['nome']:
 			colection = dados[11]
-			print("Você escolheu o Inspermon: {0}".format(dados[11]['nome']) )
+			print("Você escolheu o Inspermon: {0}".format(dados[11]['nome']))
 			list_player.append(dados[11])
 			return (Fore.WHITE + "Inspermon Adicionado!")
+			break
 		else:
-			print(Style.DIM + "Erro! Escolha novamente(Porfavor copie exatamente como mostrado!)")
-			continue
+			print(Style.DIM + Fore.RED +"Erro! Escolha novamente(Porfavor copie exatamente como mostrado!)")
+			continue #funçao no estado OK
 def Aparecimento_de_Mons(dados):
 	lista_Mons = []
 	for e in dados:
@@ -72,18 +80,20 @@ def batalha(dados):
 		if list_0[0] == dados[n]["nome"]:
 			dados_oponente = dados[n]
 		n=n+1
-	print(dados_oponente["nome"]) # No Error
+	print(Fore.YELLOW + dados_oponente["nome"]) # No Error
 	f = True
 	while f:
 		if list_player[0]["vida"]>0 and dados_oponente["vida"]>0:
 			dados_oponente["vida"] = dados_oponente["vida"] - (list_player[0]["poder"] - dados_oponente["defesa"])
 		elif dados_oponente["vida"] <= 0:
 			list_player[0]["XP"] = list_player[0]["XP"] + 10
-			print('Vitoria! o Inspermon {0} foi derrotado com sucesso! \nA experiência de seu Inspermon é agora de {1}'.format(dados_oponente["nome"],list_player[0]["XP"]))
+			print(Fore.GREEN+Style.BRIGHT+'Vitoria! o Inspermon {0} foi derrotado com sucesso!'.format(dados_oponente["nome"]))
+			print('A experiência de seu Inspermon é agora de {0}'.format(list_player[0]["XP"]))
 			d = input("Voce deseja adiciona-lo ao seu time?(Sim ou Nao): ")
 			if d == "Sim":
 				list_player.append(dados_oponente)
 				print("Inspermon adicionado com sucesso!")
+				print("Inspermons membros de seu time: {0}".format(list_player))
 				break
 			if d == "Nao":
 				print("O Inspermon {0} olha para você com uma cara de assustado e corre en direçao ao horizonte... ".format(dados_oponente["nome"]))
@@ -95,7 +105,7 @@ def batalha(dados):
 			list_player[0]["vida"]= list_player[0]["vida"] - (dados_oponente["poder"] - dados_oponente["defesa"])
 			#print(list_player[0]["vida"])
 		elif list_player[0]["vida"] <=0:
-			print("Você corre em desespero, nervoso e assustado, com seu inspermon em seu colo, enquanto ele libera seu ultimo folego de vida...")
+			print(Fore.RED + Style.BRIGHT +"Você corre em desespero, nervoso e assustado, com seu inspermon em seu colo, enquanto ele libera seu ultimo folego de vida...")
 			novo_futuro = input('VOCÊ MORREU!!!... Digite Sim para Renascer:')
 			if novo_futuro == "Sim":
 				print("Voce Correu para o hospital salvando seu Inspermon...")
@@ -103,19 +113,82 @@ def batalha(dados):
 			else:
 				print("Nao reconheço este comando, porfavor tente novamente...: ")
 # Programa Principal----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# -------------- Texto -------------------------------------------------------------
 with open("Data_Inspermons.json") as arquivo:
 	dados = json.load(arquivo)
-#with open('texto de introduçao.txt','r',encoding='utf-8') as texto:
-#	for linha in texto.readlines():
-#		print(Fore.GREEN+linha)
-print(inspermon_inicial(dados))
-#list_player.append(inspermon_inicial(dados))
+with open('texto de introduçao.txt','r',encoding='Latin-1') as texto:
+	for linha in texto.readlines():
+		print(Fore.GREEN+Style.BRIGHT+linha)
+print("------"*20)
+#-------------- Escolha do Inspermon inicial ---------------------------------------
+inspermon_inicial(dados)
 print("Inspermons membros o de seu time: {0}".format(list_player))
+print("------"*20)
+# ------------- Funçao Passear ou dormir -------------------------------------------
+g = True
+while g:
+	passear_ou_dormir()
+	break
 
-pergunta_inicial = passear_ou_dormir("")
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#deletar------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#pergunta_inicial = passear_ou_dormir("")
 
 #<<<<<<< HEAD
-if pergunta_inicial == "passear":
+'''if pergunta_inicial == "passear":
 	print(Fore.RED+"Passeando...")
 	print(Fore.RED+"Inspermon encontrado!\n")
 	f = True
@@ -129,9 +202,9 @@ if pergunta_inicial == "passear":
 			batalha(dados)
 			f = False
 		else:
-			print("Comando irreconhecivel, porfavor tentar novamente")
+			print("Comando irreconhecivel, porfavor tentar novamente")'
 #=======
-'''if pergunta_inicial == "passear":
+if pergunta_inicial == "passear":
 #<<<<<<< Updated upstream
 	print(Fore.RED+"Passeando...")
 	print(Fore.RED+"Inspermon encontrado!\n {0}".format(Aparecimento_de_Mons(dados)))
