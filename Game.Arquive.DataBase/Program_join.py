@@ -110,7 +110,7 @@ print("Inspermons membros o de seu time: {0}".format(list_player))
 
 pergunta_inicial = passear_ou_dormir("")
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 '''if pergunta_inicial == "passear":
 	print(Fore.RED+"Passeando...")
 	print(Fore.RED+"Inspermon encontrado!\n")
@@ -126,19 +126,17 @@ pergunta_inicial = passear_ou_dormir("")
 			f = False
 		else:
 			print("Comando irreconhecivel, porfavor tentar novamente")'''
-=======
+#=======
 if pergunta_inicial == "passear":
-<<<<<<< Updated upstream
+#<<<<<<< Updated upstream
 	print(Fore.RED+"Passeando...")
 	print(Fore.RED+"Inspermon encontrado!\n {0}".format(Aparecimento_de_Mons(dados)))
 else:
 	print(Fore.BLUE + "Ate a proxima!")
-=======
+#=======
 	print("Vamos passear")
 	print(inspermon_inicial(dados))
-	
+
 	print(Aparecimento_de_Mons(dados))
-else:
-	print("Até a proxima")
->>>>>>> Stashed changes
->>>>>>> d7e6c201c0acea8cbc778488eb1977af08f50302
+#else:
+	#print("Até a proxima")
