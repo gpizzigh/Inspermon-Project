@@ -298,12 +298,29 @@ with open('texto de introduçao.txt','r',encoding='Latin-1') as texto:
 
 print("------"*20)
 #-------------- Escolha do Inspermon inicial ---------------------------------------
-load = Load_game()
+#load = Load_game()
 
-list_player = load[0]
-Insperdex = load[1]
+#list_player = load[0]
+#Insperdex = load[1]
 #Load_game()
 
+
+
+while True:
+	per = input("Se você ja salvou este jogo, Deseja dar Load?\nDigite sim para abrir ou nao para iniciar um novo jogo:")
+	if per == "sim":
+		with open ('Savegame_player.json','r') as fp:
+			list_player = json.load(fp)
+				
+		with open ('Savegame_insperdex.json','r') as hp:
+			Insperdex = json.load(hp)
+		print("Load feito com sucesso!")
+		break
+	elif per == "nao":
+		inspermon_inicial(dados)
+		break
+	else:
+		print("Desculpa mas reconheço este commando!")
 
 Insperdex.append(dados[6]["nome"])
 Insperdex.append(dados[7]["nome"])
