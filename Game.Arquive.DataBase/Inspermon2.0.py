@@ -39,6 +39,9 @@ def inspermon_inicial(dados):  #OK
 		print(Fore.BLUE + "Primeira Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}".format(dados[6]['nome'],dados[6]['poder'],dados[6]['vida'],dados[6]['defesa']))
 		print(Fore.RED + "Segunda Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}".format(dados[7]['nome'],dados[7]['poder'],dados[7]['vida'],dados[7]['defesa']))
 		print(Fore.GREEN + "Terceira Opção:\n{0}\nPoder:{1}\nVida:{2}\nDefesa:{3}".format(dados[11]['nome'],dados[11]['poder'],dados[11]['vida'],dados[11]['defesa']))
+		Insperdex.append(dados[6]["nome"])
+		Insperdex.append(dados[7]["nome"])
+		Insperdex.append(dados[11]["nome"])
 		escolha = input("Escolha entre os Inspermons {0}, {1} ou {2}:".format(dados[6]["nome"],dados[7]["nome"],dados[11]["nome"]))
 		if escolha == dados[6]['nome']:
 			colection = dados[6]
@@ -322,9 +325,7 @@ while True:
 	else:
 		print("Desculpa mas reconheço este commando!")
 
-Insperdex.append(dados[6]["nome"])
-Insperdex.append(dados[7]["nome"])
-Insperdex.append(dados[11]["nome"])
+
 print("Inspermons membros o de seu time: {0}".format(list_player))
 print("------"*20)
 # ------------- Funçao Passear ou dormir -------------------------------------------
