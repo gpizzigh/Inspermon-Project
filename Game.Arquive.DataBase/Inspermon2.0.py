@@ -28,13 +28,10 @@ def passear_ou_dormir():
 			lvl_up(list_player)
 		elif pergunta_inicial == "Insperdex":
 			print(Insperdex)
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 		else:
 			print(Back.MAGENTA+"Não existe esta função!")
-
+			
 
 def inspermon_inicial(dados):  #OK
 	while True:
@@ -49,7 +46,7 @@ def inspermon_inicial(dados):  #OK
 		if escolha == dados[6]['nome']:
 			colection = dados[6]
 			list_player.append(dados[6])
-
+			
 			print("Você escolheu o Inspermon: {0}".format(dados[6]['nome'])) # so mostra o nome do Insper
 			return (Fore.WHITE + "Inspermon Adicionado!")
 			break
@@ -58,7 +55,7 @@ def inspermon_inicial(dados):  #OK
 			print("Você escolheu o Inspermon: {0}".format(dados[7]['nome']))
 			list_player.append(dados[7])
 			return (Fore.WHITE + "Inspermon Adicionado!")
-
+			
 			break
 		elif escolha == dados[11]['nome']:
 			colection = dados[11]
@@ -82,13 +79,8 @@ def Aparecimento_de_Mons(dados):  #OK
 #print (Aparecimento_de_Mons(dados))
 
 
-<<<<<<< HEAD
 def batalha_2(dados):  
  #----------------------------------------Teste-----------------------------------------
-=======
-def batalha_2(dados):
-#----------------------------------------Teste-----------------------------------------
->>>>>>> origin/master
 	n=0
 	list_0 = []
 	list_0.append(Aparecimento_de_Mons(dados))
@@ -100,7 +92,7 @@ def batalha_2(dados):
 	Insperdex.append(dados_oponente["nome"])
 	print(Fore.YELLOW + dados_oponente["nome"]) # No Error
 	vida_oponente = dados_oponente["vida"]
-
+	
 	f = True
 	while f:
 		fugir_ou_lutar = input("Você deseja fugir ou lutar?:")
@@ -115,41 +107,34 @@ def batalha_2(dados):
 			while x < len(list_player):
 				print("{0} - {1}".format(x,list_player[x]["nome"]))
 				x += 1
-
+			
 			for g in range(len(list_player)):
 				escolhido = int(input("Digite o numero de seu Inspermon escolhido: "))
 				if escolhido == g:
 					print("Inspermon escolhido: {0} ".format(list_player[g]["nome"]))
 					vida_jogador = list_player[g]["vida"]
-<<<<<<< HEAD
 					print(list_player[g]["vida"])
 					
-=======
-					#print(list_player[g]["vida"])
-
-
-
->>>>>>> origin/master
 					while list_player[g]["vida"]>0 and dados_oponente["vida"]>0:
 						z = random.randint(0,10)
 						if list_player[g]["poder"] >= dados_oponente["defesa"]:
 							if z == 9:
 								dados_oponente["vida"] = dados_oponente["vida"] - (list_player[g]["poder"]*100 - dados_oponente["defesa"])
-								print("Dano critico feito pelo Inspermon {0}".Format(list_player[g]["nome"]))
+								print("Ataque critico feito pelo Inspermon do jogador") 
 							else:
 								dados_oponente["vida"] = dados_oponente["vida"] - (list_player[g]["poder"] - dados_oponente["defesa"])
 
 						elif list_player[g]["poder"] <= dados_oponente["defesa"]:
 							if z == 9:
 								dados_oponente["vida"] = dados_oponente["vida"] - (list_player[g]["poder"]*100 - dados_oponente["defesa"])
-								print("Ataque critico do Inspermon do jogador")
+								print("Ataque critico do Inspermon do jogador") 
 							else:
 								dados_oponente["vida"] = dados_oponente["vida"]
 
 
 						if dados_oponente["vida"] <= 0:
 							list_player[g]["XP"] = list_player[g]["XP"] + 10
-							list_player[g]["vida"] = vida_jogador
+							list_player[g]["vida"] = vida_jogador  
 							print(Fore.GREEN+Style.BRIGHT+'Vitoria! o Inspermon {0} foi derrotado com sucesso!'.format(dados_oponente["nome"]))
 							print('A experiência de seu Inspermon é agora de {0}\nA vida do seu Inspermon agora é de {1}'.format(list_player[g]["XP"],list_player[g]["vida"]))
 
@@ -193,13 +178,6 @@ def batalha_2(dados):
 									return
 								else:
 									print("Nao reconheço este comando, porfavor tente novamente...:")
-<<<<<<< HEAD
-=======
-
-				else:
-					print("Digite novamente!")  # Dando erro estranho
-					continue
->>>>>>> origin/master
 
 		else:
 		    print(Fore.RED + "Porfavor digite novamente")  # Arrumei o erro !
@@ -284,14 +262,10 @@ def lvl_up(list_player):  # OK
 			return list_player[x]
 
 
-<<<<<<< HEAD
 
 
 
 def escolha(dados):  
-=======
-def escolha(dados):
->>>>>>> origin/master
 	print("Escolha um dos seguintes Inspermons de seu time para Batalhar:")
 	x = 0
 	while x < len(list_player):
@@ -314,12 +288,9 @@ def escolha(dados):
 # Programa Principal----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------- Texto -------------------------------------------------------------
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> origin/master
 with open("Data_Inspermons.json") as arquivo:
 	dados = json.load(arquivo)
 
@@ -330,7 +301,6 @@ with open('texto de introduçao.txt','r',encoding='Latin-1') as texto:
 
 print("------"*20)
 #-------------- Escolha do Inspermon inicial ---------------------------------------
-<<<<<<< HEAD
 #load = Load_game()
 
 #list_player = load[0]
@@ -356,12 +326,6 @@ while True:
 		print("Desculpa mas reconheço este commando!")
 
 
-=======
-inspermon_inicial(dados)
-Insperdex.append(dados[6]["nome"])
-Insperdex.append(dados[7]["nome"])
-Insperdex.append(dados[11]["nome"])
->>>>>>> origin/master
 print("Inspermons membros o de seu time: {0}".format(list_player))
 print("------"*20)
 # ------------- Funçao Passear ou dormir -------------------------------------------
