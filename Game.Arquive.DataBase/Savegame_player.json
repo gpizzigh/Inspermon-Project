@@ -1,0 +1,16 @@
+[
+ {
+  "nome": "Moltander",
+  "poder": 35,
+  "vida": 50,
+  "defesa": 15,
+  "XP": 10
+ },
+ {
+  "nome": "Grun",
+  "poder": 20,
+  "vida": 55,
+  "defesa": 30,
+  "XP": 0
+ }
+]

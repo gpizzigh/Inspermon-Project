@@ -8,25 +8,27 @@ init(autoreset=True)
 list_player = []
 Insperdex = []
 #Funções----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 def passear_ou_dormir():
 	f = True
 	while f:
 		pergunta_inicial = input("Você deseja passear, dormir ou acessar o Insperdex?: ")
-		if pergunta_inicial == "dormir":
+		if pergunta_inicial == "dormir": 
+			Save_game()
 			print(Fore.BLUE + "Até a proxima!")
 			f = False
 			break
+
 		elif pergunta_inicial == "passear":
 			print(Fore.BLACK + "------"*20)
 			print(Fore.RED+"Passeando...")
 			print(Fore.RED+"Inspermon encontrado!\n")
 			print(Fore.BLACK + "------"*20)
 			batalha_2(dados)
-			lvl_up(list_player) 
+			lvl_up(list_player)
 		elif pergunta_inicial == "Insperdex":
 			print(Insperdex)
-			print(funt_Insperdex(Insperdex))
-			print(len(Insperdex))
+
 		else:
 			print(Back.MAGENTA+"Não existe esta função!")
 			
@@ -75,7 +77,7 @@ def Aparecimento_de_Mons(dados):  #OK
 
 
 def batalha_2(dados):  
-#----------------------------------------Teste-----------------------------------------
+ #----------------------------------------Teste-----------------------------------------
 	n=0
 	list_0 = []
 	list_0.append(Aparecimento_de_Mons(dados))
@@ -96,7 +98,7 @@ def batalha_2(dados):
 			f = False
 		elif fugir_ou_lutar == "lutar":
 			print(Fore.RED + "Prepare-se para a batalha!")
-#--------------------------------------Teste---------------------------------------------------------------
+ #--------------------------------------Teste---------------------------------------------------------------
 			print("Escolha um dos seguintes Inspermons de seu time para Batalhar: ")
 			x = 0
 			while x < len(list_player):
@@ -110,8 +112,6 @@ def batalha_2(dados):
 					vida_jogador = list_player[g]["vida"]
 					print(list_player[g]["vida"])
 					
-
-
 					while list_player[g]["vida"]>0 and dados_oponente["vida"]>0:
 						z = random.randint(0,10)
 						if list_player[g]["poder"] >= dados_oponente["defesa"]:
@@ -175,14 +175,70 @@ def batalha_2(dados):
 									return
 								else:
 									print("Nao reconheço este comando, porfavor tente novamente...:")
-						
-				else:
-					print("Digite novamente!")  # Dando erro estranho
-					continue
 
 		else:
 		    print(Fore.RED + "Porfavor digite novamente")  # Arrumei o erro !
 		    continue
+
+def Load_game():
+	#per = input("Se você ja salvou este jogo, Deseja dar Load?\nDigite sim para abrir ou nao para iniciar um novo jogo:")
+	list_player = []
+	Insperdex = []
+	while True:
+		per = input("Se você ja salvou este jogo, Deseja dar Load?\nDigite sim para abrir ou nao para iniciar um novo jogo:")
+		if per == "sim":
+			with open ('Savegame_player.json','r') as fp:
+				list_player = json.load(fp)
+				
+			with open ('Savegame_insperdex.json','r') as hp:
+				Insperdex = json.load(hp)
+
+			print("Load feito com sucesso!")
+			break
+		elif per == "nao":
+			inspermon_inicial(dados)
+			break
+		else:
+			print("Desculpa mas reconheço este commando!")
+	return list_player, Insperdex
+
+
+
+
+
+def Save_game():
+	list_player_save = list_player
+	Insperdex_save = Insperdex
+	t = True
+	#pergunta = input("Se você ja salvou este jogo, Deseja dar Load?\nDigite sim para abrir ou nao para iniciar um novo jogo:")
+	while t:
+		H = input("Digite Sim para salvar o jogo?")
+		if H == "Sim":
+			with open ('Savegame_player.json','w') as fp:
+				json.dump(list_player_save, fp, indent = 1)
+				#list_player = list_player_save
+			with open ('Savegame_insperdex.json','w') as hp:
+				json.dump(Insperdex_save, hp, indent = 1)
+				#Insperdex =  Insperdex_save
+				print("Jogo salvo com sucesso!")
+
+			break
+					
+		elif H == "Nao":
+
+			break
+		else:
+			print("Porfavor digite novmente!")
+
+			
+			
+	'''with open ('Savegame_player.json','w') as fp:
+		json.dump(list_player_save, fp, indent = 1)
+		list_player = list_player_save
+	with open ('Savegame_insperdex.json','w') as hp:
+		json.dump(Insperdex_save, hp, indent = 1)
+		Insperdex =  insperdex_save
+		print("Jogo salvo com sucesso!")'''
 
 
 def lvl_up(list_player):  # OK
@@ -203,12 +259,8 @@ def lvl_up(list_player):  # OK
 			return list_player[x]
 
 
-def funt_Insperdex(Insperdex):  # Dando erro
-	
-	for y in range(len(Insperdex)):
-		if Insperdex[y] not in Insper2:
-			Insper2.append(Insperdex[y])
-			return Insper2
+
+
 
 def escolha(dados):  
 	print("Escolha um dos seguintes Inspermons de seu time para Batalhar:")
@@ -225,10 +277,15 @@ def escolha(dados):
 			print("Digite novamente")
 			continue
 
+
+
+
+
+
 # Programa Principal----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------- Texto -------------------------------------------------------------
 
-Insper2 = []
+
 
 
 with open("Data_Inspermons.json") as arquivo:
@@ -241,10 +298,16 @@ with open('texto de introduçao.txt','r',encoding='Latin-1') as texto:
 
 print("------"*20)
 #-------------- Escolha do Inspermon inicial ---------------------------------------
-inspermon_inicial(dados)
-Insperdex.append(dados[6])
-Insperdex.append(dados[7])
-Insperdex.append(dados[11])
+load = Load_game()
+
+list_player = load[0]
+Insperdex = load[1]
+#Load_game()
+
+
+Insperdex.append(dados[6]["nome"])
+Insperdex.append(dados[7]["nome"])
+Insperdex.append(dados[11]["nome"])
 print("Inspermons membros o de seu time: {0}".format(list_player))
 print("------"*20)
 # ------------- Funçao Passear ou dormir -------------------------------------------
