@@ -1,0 +1,16 @@
+[
+ {
+  "nome": "Moltander",
+  "poder": 35,
+  "vida": 50,
+  "defesa": 15,
+  "XP": 10
+ },
+ {
+  "nome": "Beadrill",
+  "poder": 30,
+  "vida": 45,
+  "defesa": 20,
+  "XP": 0
+ }
+]
