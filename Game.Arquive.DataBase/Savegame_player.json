@@ -7,10 +7,17 @@
   "XP": 10
  },
  {
+<<<<<<< HEAD
   "nome": "Beadrill",
   "poder": 30,
   "vida": 45,
   "defesa": 20,
+=======
+  "nome": "Turtwig",
+  "poder": 20,
+  "vida": 55,
+  "defesa": 30,
+>>>>>>> 716c4db5c44d8b0762f02b06b43040667b12d919
   "XP": 0
  }
 ]
